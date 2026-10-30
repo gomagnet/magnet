@@ -1,0 +1,8 @@
+server: https://magnet.example.com
+page: REPLACE_WITH_MONITORING_ID
+key: REPLACE_WITH_READ_ONLY_API_KEY
+listen: 127.0.0.1:8081
+# Optional native TLS instead of a reverse proxy. Files must be readable by
+# magnet-status when installed as a service.
+# tls_cert: /etc/magnet-status/fullchain.pem
+# tls_key: /etc/magnet-status/privkey.pem

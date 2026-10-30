@@ -1,0 +1,274 @@
+[
+  {
+    "name": "account_tree",
+    "label": "Account Tree"
+  },
+  {
+    "name": "api",
+    "label": "Api"
+  },
+  {
+    "name": "archive",
+    "label": "Archive"
+  },
+  {
+    "name": "backup",
+    "label": "Backup"
+  },
+  {
+    "name": "bolt",
+    "label": "Bolt"
+  },
+  {
+    "name": "bug_report",
+    "label": "Bug Report"
+  },
+  {
+    "name": "build",
+    "label": "Build"
+  },
+  {
+    "name": "cable",
+    "label": "Cable"
+  },
+  {
+    "name": "calendar_month",
+    "label": "Calendar Month"
+  },
+  {
+    "name": "chat",
+    "label": "Chat"
+  },
+  {
+    "name": "cloud",
+    "label": "Cloud"
+  },
+  {
+    "name": "cloud_done",
+    "label": "Cloud Done"
+  },
+  {
+    "name": "cloud_sync",
+    "label": "Cloud Sync"
+  },
+  {
+    "name": "code",
+    "label": "Code"
+  },
+  {
+    "name": "computer",
+    "label": "Computer"
+  },
+  {
+    "name": "construction",
+    "label": "Construction"
+  },
+  {
+    "name": "dashboard",
+    "label": "Dashboard"
+  },
+  {
+    "name": "data_object",
+    "label": "Data Object"
+  },
+  {
+    "name": "database",
+    "label": "Database"
+  },
+  {
+    "name": "developer_board",
+    "label": "Developer Board"
+  },
+  {
+    "name": "devices",
+    "label": "Devices"
+  },
+  {
+    "name": "dns",
+    "label": "Dns"
+  },
+  {
+    "name": "download",
+    "label": "Download"
+  },
+  {
+    "name": "extension",
+    "label": "Extension"
+  },
+  {
+    "name": "favorite",
+    "label": "Favorite"
+  },
+  {
+    "name": "folder",
+    "label": "Folder"
+  },
+  {
+    "name": "folder_shared",
+    "label": "Folder Shared"
+  },
+  {
+    "name": "forum",
+    "label": "Forum"
+  },
+  {
+    "name": "gamepad",
+    "label": "Gamepad"
+  },
+  {
+    "name": "groups",
+    "label": "Groups"
+  },
+  {
+    "name": "hard_drive",
+    "label": "Hard Drive"
+  },
+  {
+    "name": "home",
+    "label": "Home"
+  },
+  {
+    "name": "hub",
+    "label": "Hub"
+  },
+  {
+    "name": "key",
+    "label": "Key"
+  },
+  {
+    "name": "lan",
+    "label": "Lan"
+  },
+  {
+    "name": "language",
+    "label": "Language"
+  },
+  {
+    "name": "layers",
+    "label": "Layers"
+  },
+  {
+    "name": "lightbulb",
+    "label": "Lightbulb"
+  },
+  {
+    "name": "lock",
+    "label": "Lock"
+  },
+  {
+    "name": "mail",
+    "label": "Mail"
+  },
+  {
+    "name": "memory",
+    "label": "Memory"
+  },
+  {
+    "name": "monitoring",
+    "label": "Monitoring"
+  },
+  {
+    "name": "network_check",
+    "label": "Network Check"
+  },
+  {
+    "name": "notifications",
+    "label": "Notifications"
+  },
+  {
+    "name": "package_2",
+    "label": "Package 2"
+  },
+  {
+    "name": "public",
+    "label": "Public"
+  },
+  {
+    "name": "rocket_launch",
+    "label": "Rocket Launch"
+  },
+  {
+    "name": "router",
+    "label": "Router"
+  },
+  {
+    "name": "schedule",
+    "label": "Schedule"
+  },
+  {
+    "name": "science",
+    "label": "Science"
+  },
+  {
+    "name": "security",
+    "label": "Security"
+  },
+  {
+    "name": "sensors",
+    "label": "Sensors"
+  },
+  {
+    "name": "settings",
+    "label": "Settings"
+  },
+  {
+    "name": "shield",
+    "label": "Shield"
+  },
+  {
+    "name": "smart_toy",
+    "label": "Smart Toy"
+  },
+  {
+    "name": "speed",
+    "label": "Speed"
+  },
+  {
+    "name": "sports_esports",
+    "label": "Sports Esports"
+  },
+  {
+    "name": "storage",
+    "label": "Storage"
+  },
+  {
+    "name": "terminal",
+    "label": "Terminal"
+  },
+  {
+    "name": "tune",
+    "label": "Tune"
+  },
+  {
+    "name": "update",
+    "label": "Update"
+  },
+  {
+    "name": "upload",
+    "label": "Upload"
+  },
+  {
+    "name": "verified",
+    "label": "Verified"
+  },
+  {
+    "name": "videocam",
+    "label": "Videocam"
+  },
+  {
+    "name": "vpn_key",
+    "label": "Vpn Key"
+  },
+  {
+    "name": "web",
+    "label": "Web"
+  },
+  {
+    "name": "webhook",
+    "label": "Webhook"
+  },
+  {
+    "name": "wifi",
+    "label": "Wifi"
+  }
+]

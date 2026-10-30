@@ -1,0 +1,28 @@
+# Start without a config for browser setup; sudo ./MagnetServer -install installs the service.
+# Paths are relative to this configuration file's directory.
+listen: "127.0.0.1:8080"
+# Set to an address the nodes can reach. No domain or certificate is required.
+public_url: "http://192.0.2.10:8080"
+data_dir: "data"
+# MariaDB connection settings. All five connection keys are required.
+# Provision the database/account first, or let setup create the database
+# using an account with CREATE privilege. Password is never returned by the API.
+database:
+  host: "127.0.0.1"
+  port: 3306
+  user: "magnet"
+  password: "change-this-password"
+  name: "magnet"
+  # true requires a valid trusted server certificate; no insecure TLS fallback.
+  tls: false
+# Optional HTTPS for browser access. Agent messages are encrypted independently.
+tls_cert: ""
+tls_key: ""
+# Opt-in per enrollment, and independently disabled by Link -no-script.
+# Runs once as the Link service user, after credentials have been saved.
+setup_script: ""
+
+# Accept forwarded client IP headers only from these reverse proxies.
+trusted_proxies:
+  - 127.0.0.0/8
+  - ::1/128

@@ -1,0 +1,13 @@
+.cache/
+**/data/
+**/*.key
+**/link.yaml
+**/magnet.yaml
+**/.idea/
+**/MagnetServer
+**/MagnetStatus
+**/MagnetLink
+dist/
+
+!MagnetServer/
+!MagnetStatus/

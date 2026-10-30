@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="light dark"><title>Magnet · Your infrastructure, together</title><link rel="icon" type="image/png" href="/magnet-icon.png"><link rel="apple-touch-icon" href="/magnet-icon.png"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/scrollbars.css"><script src="/scrollbars.js" defer></script><script src="/i18n.js" defer></script><script src="/vendor/monaco/vs/loader.js" defer></script><script src="/inner-navigation.js" defer></script><script src="/icon-presets.js" defer></script><script src="/editors.js" defer></script><script src="/compose.js" defer></script><script src="/autoload.js" defer></script><script src="/management.js" defer></script><script src="/workspaces.js" defer></script><script src="/status-admin.js" defer></script><script src="/configuration.js" defer></script><script src="/cleanup.js" defer></script><script src="/server-groups.js" defer></script><script src="/accounts.js" defer></script><script src="/account-editors.js" defer></script><script src="/startup-manager.js" defer></script><script src="/charts.js" defer></script><script src="/performance.js" defer></script><script src="/app.js" defer></script></head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+ <aside class="sidebar" id="sidebar">
+  <a class="brand" href="#overview"><img class="brand-icon" src="/magnet-icon.png" alt="" width="40" height="40"><span>Magnet<small>Infrastructure workspace</small></span></a>
+  <div class="sidebar-scroll">
+  <div id="workspace-navigation">
+   <button class="search-trigger" id="search-trigger"><span data-icon="search"></span> Find a server <kbd>/</kbd></button>
+   <div class="nav-label">WORKSPACE</div>
+   <nav aria-label="Workspace navigation">
+    <a href="#overview" data-page="overview"><span data-icon="overview"></span>Overview</a>
+    <a href="#servers" data-page="servers"><span data-icon="servers"></span>Servers<span class="nav-count" id="node-count">0</span></a>
+    <a href="#status-pages" data-page="monitorings"><span data-icon="globe"></span>Status pages</a>
+    <a href="#access" data-page="access"><span data-icon="users"></span>Users &amp; access</a>
+    <a href="#batch" data-page="batch"><span data-icon="apps"></span>Batch operations</a>
+    <a href="#jobs" data-page="jobs"><span data-icon="jobs"></span>Activity &amp; jobs</a>
+    <a href="#alerts" data-page="alerts"><span data-icon="alerts"></span>Workspace alerts<span id="alert-count" class="nav-count">0</span></a>
+   </nav>
+  </div>
+  <div id="server-navigation" hidden>
+   <a class="all-servers" href="#servers">← All servers</a>
+   <div class="server-context"><span class="server-glyph" data-icon="servers"></span><div><strong id="context-server-name"></strong><small id="context-server-address"></small></div></div>
+   <div class="nav-label">SERVER</div>
+   <nav aria-label="Server navigation">
+    <a data-server-page="server" data-page="server"><span data-icon="overview"></span>Overview</a>
+    <a data-server-page="performance" data-page="performance"><span data-icon="cpu"></span>Performance</a>
+    <a data-server-page="network" data-page="network"><span data-icon="network"></span>DNS</a>
+    <a data-server-page="services" data-page="services"><span data-icon="globe"></span>Services</a>
+    <a data-server-page="users" data-page="users"><span data-icon="users"></span>Linux users</a>
+    <a data-server-page="docker" data-page="docker"><span data-icon="docker"></span>Containers</a>
+    <a data-server-page="mariadb" data-page="mariadb"><span data-icon="database"></span>MariaDB</a>
+    <a data-server-page="apps" data-page="apps"><span data-icon="apps"></span>Apps &amp; packages</a>
+    <a data-server-page="cleanup" data-page="cleanup"><span data-icon="disk"></span>Cleanup</a>
+    <a data-server-page="startup" data-page="startup"><span data-icon="startup"></span>Startup &amp; cron</a>
+    <a data-server-page="connect" data-page="connect"><span data-icon="connect"></span>Terminal &amp; files</a>
+    <a data-server-page="jobs" data-page="jobs"><span data-icon="jobs"></span>Activity &amp; jobs</a>
+    <a data-server-page="alerts" data-page="alerts"><span data-icon="alerts"></span>Alert rules</a>
+   </nav>
+  </div>
+  </div>
+  <div class="sidebar-bottom"><a href="#settings" data-page="settings" class="settings-link"><span data-icon="settings"></span>Settings</a><div class="account"><span class="avatar">A</span><span>Administrator<small>Personal workspace</small></span><button id="logout" aria-label="Sign out" title="Sign out">↪</button></div></div>
+ </aside>
+ <button class="sidebar-backdrop" id="sidebar-backdrop" tabindex="-1" aria-label="Close navigation" hidden></button>
+ <div class="workspace"><header class="topbar"><button class="mobile-menu" id="mobile-menu" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false">☰</button><div class="breadcrumbs" id="breadcrumbs"><a href="#overview">Workspace</a><span>/</span><strong id="breadcrumb">Overview</strong></div><div class="topbar-right"><button class="icon-button" id="theme-toggle" aria-label="Change color theme" title="Theme">◐</button></div></header>
+ <main id="main" tabindex="-1"></main><footer><span><img class="brand-mini" src="/magnet-icon.png" alt="" width="20" height="20"> Magnet · Infrastructure, together.</span><span id="refresh-time">Waiting for your workspace</span></footer></div>
+</div>
+<dialog id="modal" aria-labelledby="modal-title"><div class="dialog-heading"><div><div class="eyebrow" id="modal-eyebrow">MAGNET WORKSPACE</div><h2 id="modal-title"></h2></div><button class="icon-button" id="modal-close" aria-label="Close dialog">×</button></div><div id="modal-content"></div></dialog>
+<dialog id="file-editor-dialog" aria-labelledby="file-editor-title"></dialog>
+<dialog id="step-up-dialog" aria-labelledby="step-up-title"><form id="step-up-form"><div class="eyebrow">AUTHENTICATOR VERIFICATION</div><h2 id="step-up-title">Confirm this sensitive action</h2><p class="hint">Enter a fresh authenticator code or an unused recovery code. Verification stays active for 30 minutes of inactivity, until your session expires.</p><label>Code<input name="code" autocomplete="one-time-code" required></label><p id="step-up-error" class="error" role="alert"></p><div class="form-actions"><button id="step-up-cancel" type="button">Cancel</button><button type="submit" class="primary">Verify →</button></div></form></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<dialog id="compose-editor-dialog" class="compose-editor-dialog" aria-labelledby="compose-editor-title"></dialog></body></html>

@@ -1,0 +1,25 @@
+:root{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16.1px;color-scheme:light;--bg:#f8f9fb;--panel:#fff;--sidebar:#f4f5f7;--soft:#f5f6f8;--line:#e7e9ee;--text:#24272e;--muted:#6f7480;--accent:#2563eb;--accent-soft:#eaf1ff;--green:#22714f;--green-soft:#e9f5ef;--red:#b94e4e;--shadow:0 2px 5px #24272e03,0 10px 25px #24272e02;--input:#fff}
+html[data-theme=dark]{color-scheme:dark;--bg:#141416;--panel:#1b1b1e;--sidebar:#111113;--soft:#222225;--line:#2c2c31;--text:#ededf0;--muted:#a4a8b2;--accent:#82b1ff;--accent-soft:#1d2d4b;--green:#74c7a4;--green-soft:#20372f;--red:#de9090;--shadow:0 2px 8px #0001;--input:#202023}
+@media(prefers-color-scheme:dark){html[data-theme=auto]{color-scheme:dark;--bg:#141416;--panel:#1b1b1e;--sidebar:#111113;--soft:#222225;--line:#2c2c31;--text:#ededf0;--muted:#a4a8b2;--accent:#82b1ff;--accent-soft:#1d2d4b;--green:#74c7a4;--green-soft:#20372f;--red:#de9090;--shadow:0 2px 8px #0001;--input:#202023}}
+*{box-sizing:border-box}body{margin:0;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--bg);background-image:radial-gradient(ellipse at 20% 30%,var(--accent-soft),transparent 60%);color:var(--text)}
+.login-card{width:420px;max-width:100%;padding:28px;border:1px solid var(--line);border-radius:16px;background:var(--panel);box-shadow:var(--shadow)}.brand-icon{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;background:var(--text);color:var(--panel);border-radius:10px;font:bold 2.142857rem/1 Georgia,serif;transform:rotate(-10deg);margin-bottom:24px}.eyebrow{font-size:0.642857rem;letter-spacing:1.6px;color:var(--muted);font-weight:600}h1{font-size:2.142857rem;font-weight:620;letter-spacing:-1px;line-height:1.2;margin:12px 0 18px}p{font-size:0.857143rem;color:var(--muted);line-height:1.7;margin:0}code{font:0.857143rem Consolas,monospace;overflow-wrap:anywhere}label{display:block;font-size:0.857143rem;font-weight:500;margin-top:20px}input,button{font:inherit}input{display:block;width:100%;margin-top:8px;padding:11px 12px;border:1px solid var(--line);border-radius:7px;background:var(--input);color:var(--text)}button{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:20px;padding:11px 13px;border:1px solid #2563eb;border-radius:7px;background:#2563eb;color:#fff;cursor:pointer}button:disabled{opacity:.5;cursor:wait}:focus-visible{outline:2px solid var(--accent);outline-offset:3px}.error{color:var(--red);margin-top:14px;white-space:pre-wrap}.error:empty{display:none}.login-card>small{display:block;text-align:center;font-size:0.642857rem;color:var(--muted);margin-top:23px}@media(max-width:440px){body{padding:16px}.login-card{padding:25px}h1{font-size:1.928571rem}}
+
+.login-card{width:460px}.brand-icon{width:40px;height:40px}input,button{min-height:2.75rem;line-height:1.5;font-size:.875rem}
+[hidden]{display:none!important}#login-providers{border-top:1px solid var(--line);margin-top:20px;padding-top:18px}#login-providers a{display:block;padding:11px 13px;margin-top:10px;border:1px solid var(--line);border-radius:7px;text-decoration:none;color:var(--text);font-size:.9rem;text-align:center}#login-providers a:hover{border-color:var(--accent)}
+
+/* Match the workspace form rhythm on sign-in and invitation screens. */
+.login-card{margin:auto;overflow-wrap:anywhere}
+input:hover{border-color:var(--muted)}
+input:focus-visible{border-color:var(--accent)}
+button:hover:not(:disabled){opacity:.88}
+#login-providers a{display:flex;align-items:center;justify-content:center;min-height:2.75rem;line-height:1.5}
+#invite-back{background:var(--panel);border-color:var(--line);color:var(--text)}
+#invite-recovery h2{font-size:1.25rem;margin:0 0 12px}
+#invite-recovery a,#invite-uri{display:inline-flex;align-items:center;min-height:2.75rem;color:var(--accent);text-underline-offset:3px}
+#invite-recovery a:hover,#invite-uri:hover{text-decoration:underline}
+#invite-secret,#invite-codes{padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--soft);font-size:.875rem;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:440px){.login-card{padding:24px}body{padding:16px}}
+
+.brand-icon{background:transparent;transform:none;border-radius:0;object-fit:contain}
+
+input,input:focus,input:focus-visible{outline:none;box-shadow:none}input:focus,input:focus-visible{border-color:var(--accent)}

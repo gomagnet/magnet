@@ -1,0 +1,27 @@
+/* Native fallback stays usable before enhancement and in older browsers. */
+:root{--scroll-thumb:color-mix(in srgb,var(--muted,#6f7480) 45%,transparent);--scroll-thumb-hover:color-mix(in srgb,var(--accent,#2563eb) 70%,transparent)}
+*{scrollbar-width:thin;scrollbar-color:var(--scroll-thumb) transparent;scrollbar-gutter:auto}
+::-webkit-scrollbar{width:8px;height:8px;background:transparent}
+::-webkit-scrollbar-track,::-webkit-scrollbar-corner{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--scroll-thumb);border:2px solid transparent;background-clip:padding-box;border-radius:999px}
+::-webkit-scrollbar-thumb:hover{background-color:var(--scroll-thumb-hover)}
+::-webkit-scrollbar-button{display:none;width:0;height:0}
+.magnet-overlay-scroller{scrollbar-width:none!important;scrollbar-gutter:auto!important}
+.magnet-overlay-scroller::-webkit-scrollbar{display:none;width:0;height:0}
+/* Popover portals share the viewport coordinate system, including in dialogs. */
+.magnet-scroll-layer[popover]{position:fixed;inset:0;margin:0;padding:0;border:0;width:auto;height:auto;max-width:none;max-height:none;background:transparent;color:inherit;pointer-events:none;overflow:visible;box-shadow:none;animation:none}
+.magnet-scroll-layer::backdrop{background:transparent;pointer-events:none}
+.magnet-scrollbar{position:absolute;display:block;box-sizing:border-box;margin:0;padding:0;border:0;border-radius:999px;background:transparent;pointer-events:auto;touch-action:none;user-select:none;cursor:default;outline-offset:-2px;opacity:.68;transition:opacity .15s}
+.magnet-scrollbar[hidden]{display:none!important}
+.magnet-scrollbar:hover,.magnet-scrollbar:focus-visible,.magnet-scrollbar.is-dragging{opacity:1}
+.magnet-scrollbar:focus-visible{outline:2px solid var(--accent,#2563eb)}
+.magnet-scroll-thumb{position:absolute;display:block;border-radius:999px;background:var(--scroll-thumb);pointer-events:none;transition:background-color .15s}
+.magnet-scrollbar[data-axis=y] .magnet-scroll-thumb{width:5px;right:2px;top:0}
+.magnet-scrollbar[data-axis=x] .magnet-scroll-thumb{height:5px;bottom:2px;left:0}
+.magnet-scrollbar:hover .magnet-scroll-thumb,.magnet-scrollbar:focus-visible .magnet-scroll-thumb,.magnet-scrollbar.is-dragging .magnet-scroll-thumb{background:var(--scroll-thumb-hover)}
+/* Monaco already overlays its content; retain its own input/scroll handling. */
+.monaco-scrollable-element>.scrollbar,.monaco-scrollable-element>.shadow,.monaco-scrollable-element>.scrollbar>.scra{background:transparent!important;box-shadow:none!important}
+.monaco-scrollable-element>.scrollbar>.slider{background:var(--scroll-thumb)!important;border-radius:999px}
+.monaco-scrollable-element>.scrollbar>.slider:hover,.monaco-scrollable-element>.scrollbar>.slider.active{background:var(--scroll-thumb-hover)!important}
+@media(prefers-reduced-motion:reduce){.magnet-scrollbar,.magnet-scroll-thumb{transition:none}}
+@media(forced-colors:active){:root{--scroll-thumb:CanvasText;--scroll-thumb-hover:Highlight}.magnet-scroll-thumb{forced-color-adjust:none}}

@@ -1,0 +1,22 @@
+[Unit]
+Description=Magnet infrastructure workspace
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=magnet
+Group=magnet
+WorkingDirectory=/opt/magnet
+ExecStart=/opt/magnet/MagnetServer -config /opt/magnet/config/magnet.yaml -data-dir /opt/magnet/data -setup-listen 0.0.0.0:8080
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/magnet/data /opt/magnet/config
+
+[Install]
+WantedBy=multi-user.target
