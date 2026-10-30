@@ -3,6 +3,8 @@
 A self-hosted dashboard for your Debian and Ubuntu servers. Keep an eye on server health, manage software, and handle everyday tasks from your browser.
 A lightweight but trusted friend for a technical admin.
 
+![Dashboard](images/dashboard.png)
+
 ## Features
 
 - CPU, memory, disk, and network monitoring
@@ -14,6 +16,8 @@ A lightweight but trusted friend for a technical admin.
 - Alerts and public status pages
 - User accounts, server groups, two-factor authentication, and OpenID Connect login
 - Light and dark themes
+
+![Dashboard](images/startup-n-cron.png)
 
 ## Getting started
 
