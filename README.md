@@ -19,6 +19,17 @@ A lightweight but trusted friend for a technical admin.
 
 ![Dashboard](images/startup-n-cron.png)
 
+## ⚡ Quick start
+- Download MagnetServer to some separate folder
+- Run the server using `./MagnetLink -install`
+- Read admin password: `journalctl -u magnet-server.service -n 20 --no-pager`
+- Set up reverse proxy (nginx, caddy etc) or just open `http://localhost:8080`
+- Log in as admin, open servers page and click `Connect` -> `Generate setup command`
+- Place another copy of MagnetLink on another server and run generated command
+- Done!
+
+For MagnetStatus  the process is generally same.
+
 ## Getting started
 
 You'll need Debian or Ubuntu with systemd, a MariaDB database account, and the `MagnetServer` and `MagnetLink` executables for your machines.
