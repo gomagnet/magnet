@@ -4,6 +4,8 @@ Read this file before working on the project, together with any applicable `AGEN
 
 ## Mandatory working rules
 
+- **Do not add decorative/redundant eyebrow labels to any page or modal** (for example, “Magnet workspace”). Show the meaningful page/dialog title and useful context only. This is an explicit owner preference.
+
 - **Never run builds. Never create unit tests. Never run tests. Only static code checks are permitted.**
 - Do not run `go build`, `go test`, frontend builds, or equivalent build/test commands. Do not start the application, containers, or a browser session to validate changes under the static-checks-only policy.
 - Permitted checks include reading source, JavaScript syntax checks (`node --check`), Go formatting (`gofmt`), static analysis (`go vet -tests=false`), and static HTML/CSS checks. Target Linux for Go static analysis involving Link.
@@ -308,3 +310,14 @@ References: [systemd.service](https://www.freedesktop.org/software/systemd/man/l
 - SQLite discovery checks actual file headers in common data roots (`/var/lib`, `/srv`, `/opt`, `/home`, Link home), bounded to 20,000 entries, six directory levels and 200 results. SQLite headers are checked regardless of filename extension; other locations are not automatically discovered.
 - PostgreSQL uses the Link OS user with peer authentication; a root Link invokes `psql` as the local postgres OS account. No browser credentials/profiles are introduced. Authentication failures remain visible. MagnetServer's own MariaDB datastore is unchanged.
 - Keep personal TOTP and server Manage checks for discovery and every database operation. Ignore results from a superseded connection and clear connections on leaving this server tool.
+
+
+## Service creator layout correction
+
+- The shared modal header has no decorative workspace eyebrow. Service creation uses a centered, viewport-bounded dialog, with fixed 18px template radio controls and flexible card text; full-width text-input rules must never size those radios. Keep the single-column template layout on narrow screens. Verify with static checks only.
+
+
+## Decorative-label removal
+
+- Remove decorative eyebrows/overlines everywhere, not only in modal headers: login, setup, authenticator verification, explorer, sidebar group headings, redundant connection headings and generic marketing/attribution footer labels. Keep brand identity, meaningful titles, navigation/breadcrumbs, form labels, actual status/permission badges, resource names, timestamps, limits and actionable help. Public status-page descriptions/footer text configured by the owner remain intact.
+- The setup page uses the plain title “Set up Magnet”. Shared styles for removed eyebrow/nav-label/slogan markup are removed. Do not reintroduce these labels in future pages/modals.

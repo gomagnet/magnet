@@ -3,6 +3,7 @@
 // data are excluded; control values and API payloads always remain unchanged.
 (()=>{
  const ru=Object.fromEntries(`
+Set up Magnet|Настройка Magnet
 Databases|Базы данных
 Find local databases|Поиск локальных баз данных
 Connect to database|Подключение к базе данных
