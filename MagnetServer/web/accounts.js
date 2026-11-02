@@ -1,6 +1,6 @@
 'use strict';
 const accountAdmin={users:[],groups:[],providers:[],nodes:[],pages:[],serverGroups:[],callback:'',filters:{users:'',groups:'',providers:''},loaded:false,error:'',pending:null,version:0};
-const restrictedServerPages=new Set(['cleanup','users','docker','mariadb','apps','network','startup','connect','alerts']);
+const restrictedServerPages=new Set(['cleanup','users','docker','databases','apps','network','startup','connect','alerts']);
 function canAccess(kind,id,manage=false){const p=state.user;if(!p)return false;if(p.admin)return true;const level=(kind==='server'?p.servers:p.monitorings)?.[id];return level==='manage'||(!manage&&level==='view');}
 function accessNavigation(){
  if(!state.authenticated)return;

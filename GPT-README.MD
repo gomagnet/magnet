@@ -95,7 +95,7 @@ Keep each module-root executable command intact. Put implementation in responsib
 
 - Use a **Cloudflare-like workspace → selected server** flow.
 - The workspace menu contains fleet/workspace entries: overview, servers, monitorings, users/access (administrators), batch operations, workspace activity, workspace alerts (administrators), and settings. Node-specific tools appear after opening a server. Hide unavailable actions/navigation while enforcing authorization independently in the backend.
-- The selected-server sidebar contains its overview (including resource history), DNS, services, Linux users, containers, MariaDB, packages, startup/cron, terminal/files, jobs, and alerts. Show the server identity and an **All servers** return link.
+- The selected-server sidebar contains its overview (including resource history), DNS, services, Linux users, containers, Databases, packages, startup/cron, terminal/files, jobs, and alerts. Show the server identity and an **All servers** return link.
 - **No per-page server dropdowns or selectors.** Profiles and node-specific forms inherit the active server. Fleet checkboxes in the server list are for batch targets, not for changing page context.
 - Server routes include the node ID (`/dash#server/<node-id>/<page>`), so reloads, bookmarks, and Back/Forward retain context. A missing/removed node returns to the server list; never silently select another server.
 - Scope metrics, history, jobs, activity, and management data to the current server. Filter limited job/event queries by node before applying the result limit.
@@ -299,3 +299,12 @@ References: [systemd.service](https://www.freedesktop.org/software/systemd/man/l
 - Link samples numeric `/proc` process directories with the existing heartbeat. CPU is a fraction of total host capacity; disk rates use `read_bytes`/`write_bytes` deltas. First samples, reused PIDs, counter resets and inaccessible I/O show unknown rates. Names come from `comm`; command lines and environments are never collected. Per-process network attribution is unavailable. Only processes visible to the Link account can be listed; exited/unreadable processes and the 4096-row wire-size bound are disclosed in the UI.
 - Process snapshots are live only: omitted from historical samples and fleet API responses. Offline servers show no cached process readings. Existing stream/update authentication and viewer permissions remain unchanged. Update Link to 0.4.10 to report process telemetry.
 - Validation remains static only: no builds, tests, application startup or live process probes.
+
+
+## Local database discovery
+
+- The server sidebar uses **Databases** at `#server/<id>/databases`; old `mariadb` links still resolve. Search lists multiple local MySQL/MariaDB sockets, PostgreSQL sockets (with `psql` installed), and SQLite files (with `sqlite3` installed). Clicking an entry connects and opens its explorer; database selection stays within that instance.
+- MySQL/MariaDB retains account management and concurrent-safe grid editing. PostgreSQL and SQLite support table browsing, structure and SQL execution; their grid is read-only and account changes use SQL. This does not claim arbitrary SQL-engine or remote/container endpoint support.
+- SQLite discovery checks actual file headers in common data roots (`/var/lib`, `/srv`, `/opt`, `/home`, Link home), bounded to 20,000 entries, six directory levels and 200 results. SQLite headers are checked regardless of filename extension; other locations are not automatically discovered.
+- PostgreSQL uses the Link OS user with peer authentication; a root Link invokes `psql` as the local postgres OS account. No browser credentials/profiles are introduced. Authentication failures remain visible. MagnetServer's own MariaDB datastore is unchanged.
+- Keep personal TOTP and server Manage checks for discovery and every database operation. Ignore results from a superseded connection and clear connections on leaving this server tool.

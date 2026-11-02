@@ -3,6 +3,24 @@
 // data are excluded; control values and API payloads always remain unchanged.
 (()=>{
  const ru=Object.fromEntries(`
+Databases|Базы данных
+Find local databases|Поиск локальных баз данных
+Connect to database|Подключение к базе данных
+Search again|Повторить поиск
+Available databases|Доступные базы данных
+Find database|Найти базу данных
+Find a database…|Найти базу данных…
+Local endpoint|Локальный адрес
+Engine|СУБД
+Close connection|Закрыть подключение
+Connecting to database…|Подключение к базе данных…
+Searching for databases…|Поиск баз данных…
+No matching databases found.|Подходящие базы данных не найдены.
+Connect a node to manage databases.|Подключите сервер для управления базами данных.
+Discover local MySQL, MariaDB, PostgreSQL and SQLite databases.|Найдите локальные базы данных MySQL, MariaDB, PostgreSQL и SQLite.
+Local socket authentication uses the Link account. PostgreSQL requires psql; SQLite requires sqlite3. SQLite files are searched in common data directories.|Для подключения через локальный сокет используется аккаунт Link. Для PostgreSQL нужен psql, для SQLite — sqlite3. Файлы SQLite ищутся в стандартных каталогах данных.
+Search limit reached. Some SQLite files may not be listed.|Достигнут предел поиска. Некоторые файлы SQLite могут отсутствовать в списке.
+Grid editing requires an InnoDB table with a non-binary primary key. Use SQL for changes in other engines.|Для редактирования в таблице нужна InnoDB с небинарным первичным ключом. В других СУБД используйте SQL.
 Use arrow keys to inspect recorded samples.|Используйте стрелки для просмотра записанных значений.
 Network history requires ready uplink samples from MagnetLink 0.4.9 or newer.|Для истории сети требуются измерения интернет-интерфейсов от MagnetLink 0.4.9 или новее.
 Find an icon|Найти иконку

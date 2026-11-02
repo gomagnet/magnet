@@ -11,8 +11,8 @@ function screenStatus(name,label='Loading…'){
 }
 function screenCurrent(node,version){return state.authenticated&&state.node===node&&screenData.node===node&&screenData.version===version;}
 async function screenTask(name,kind,args,apply){
- const node=state.node,version=screenData.version;
- const current=()=>screenCurrent(node,version)&&(name!=='tables'||args.schema===managed.dbSchema)&&(!['rows','structure'].includes(name)||(args.schema===managed.dbSchema&&args.table===managed.dbTable))&&(name!=='rows'||args.offset===String(dbView.offset));
+ const node=state.node,version=screenData.version,selected=managed.dbSelected;
+ const current=()=>screenCurrent(node,version)&&(!kind.startsWith('database.')||kind==='database.status'||selected===managed.dbSelected)&&(name!=='tables'||args.schema===managed.dbSchema)&&(!['rows','structure'].includes(name)||(args.schema===managed.dbSchema&&args.table===managed.dbTable))&&(name!=='rows'||args.offset===String(dbView.offset));
  const key=JSON.stringify([node,kind,args]);
  screenData.loading.add(name);delete screenData.errors[name];paintScreenData(name);
  let promise=screenData.pending.get(key);
@@ -28,19 +28,15 @@ function replaceScreenPanel(selector,html){
 }
 function paintScreenData(name){
  if(!state.authenticated)return;
- if(['linkConnection','databaseConnection'].includes(name)&&['connect','mariadb'].includes(state.page))render();
+ if(['linkConnection','databaseConnection'].includes(name)&&['connect','databases'].includes(state.page))render();
  if(name==='users'&&state.page==='users')replaceScreenPanel('#users-panel',usersPage());
  if(name==='containers'&&state.page==='docker')replaceScreenPanel('#container-panel',docker());
- if(name==='installation'&&state.page==='mariadb'){
-  // Show automatic connection status after the installation check.
-  if(managed.dbInstalled!==null&&!managed.dbConnected&&managed.dbInstalled){render();}
-  else replaceScreenPanel('#database-installation',mariadbPage());
- }
- if(name==='schemas'&&state.page==='mariadb')replaceScreenPanel('#database-browser',mariadbPage());
- if(name==='databaseUsers'&&state.page==='mariadb')replaceScreenPanel('#database-users-panel',mariadbPage());
- if(name==='rows'&&state.page==='mariadb')paintDatabaseRows();
- if(name==='structure'&&state.page==='mariadb'){const el=$('#db-structure');if(el)el.innerHTML=databaseStructure();}
- if(name==='tables'&&state.page==='mariadb')replaceScreenPanel('#database-browser',mariadbPage());
+ if(name==='installation'&&state.page==='databases')replaceScreenPanel('#database-installation',databasesPage());
+ if(name==='schemas'&&state.page==='databases')replaceScreenPanel('#database-browser',databasesPage());
+ if(name==='databaseUsers'&&state.page==='databases')replaceScreenPanel('#database-users-panel',databasesPage());
+ if(name==='rows'&&state.page==='databases')paintDatabaseRows();
+ if(name==='structure'&&state.page==='databases'){const el=$('#db-structure');if(el)el.innerHTML=databaseStructure();}
+ if(name==='tables'&&state.page==='databases')replaceScreenPanel('#database-browser',databasesPage());
  if(name==='services'&&state.page==='startup'){const el=$('#service-rows');if(el)el.innerHTML=serviceRows();}
  if(name==='composes'&&state.page==='docker')replaceScreenPanel('#compose-projects',composeProjectsHTML());
  if(name==='cron'&&state.page==='startup'){
@@ -65,10 +61,9 @@ async function loadScreenData(fresh=true){
  if(state.page==='users')tasks.push(loadUnixUsers());
  if(state.page==='docker')tasks.push(loadContainers(),loadComposes());
  if(state.page==='startup')tasks.push(loadServices(),loadCron());
- if(state.page==='mariadb')tasks.push((async()=>{
-  if(!await inspectMariaDB()||state.page!=='mariadb'||!managed.dbInstalled)return;
-  if(!managed.dbConnected&&!await connectNodeDatabase())return;
-  if(managed.dbConnected){const reads=[loadSchemas(),loadDatabaseUsers()];if(managed.dbSchema)reads.push(loadDatabaseTables());if(managed.dbTable){reads.push(loadDatabaseRows());if(dbView.tab==='structure')reads.push(loadDatabaseStructure());}await Promise.allSettled(reads);}
+ if(state.page==='databases')tasks.push((async()=>{
+  await inspectDatabases();if(state.page!=='databases')return;
+  if(managed.dbConnected){const reads=[loadSchemas()];if(managed.dbSelected?.engine==='mysql')reads.push(loadDatabaseUsers());if(managed.dbSchema)reads.push(loadDatabaseTables());if(managed.dbTable){reads.push(loadDatabaseRows());if(dbView.tab==='structure')reads.push(loadDatabaseStructure());}await Promise.allSettled(reads);}
  })());
  if(state.page==='connect')tasks.push((async()=>{if(!managed.linkConnected&&!await connectLinkAccount())return;if(state.page==='connect'&&managed.linkConnected)await browseFiles().catch(()=>{});})());
  await Promise.allSettled(tasks);
